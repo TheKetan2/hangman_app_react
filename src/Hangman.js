@@ -29,6 +29,7 @@ class Hangman extends Component {
       this.state.guessed.has(ltr) ? ltr : "_"
     );
     console.log(gq);
+    return gq;
   }
 
   /** handleGuest: handle a guessed letter:
