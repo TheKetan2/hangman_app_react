@@ -22,6 +22,7 @@ class Hangman extends Component {
   }
 
   /** guessedWord: show current-state of word:
+   * 
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
   guessedWord() {
