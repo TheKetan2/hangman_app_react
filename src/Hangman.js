@@ -26,11 +26,9 @@ class Hangman extends Component {
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
   guessedWord() {
-    let gq = this.split("").map((ltr) =>
-      this.state.guessed.has(ltr) ? ltr : "_"
-    );
-    console.log(gq);
-    return gq;
+    return this.state.answer
+      .split("")
+      .map((ltr) => (this.state.guessed.has(ltr) ? ltr : "_"));
   }
 
   /** handleGuest: handle a guessed letter:
@@ -49,6 +47,7 @@ class Hangman extends Component {
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map((ltr) => (
       <button
+        key={ltr}
         value={ltr}
         onClick={this.handleGuess}
         disabled={this.state.guessed.has(ltr)}
