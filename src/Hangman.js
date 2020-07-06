@@ -25,11 +25,21 @@ class Hangman extends Component {
       answer: randomWord(),
     };
     this.handleGuess = this.handleGuess.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   /** guessedWord: show current-state of word:
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
+
+  reset() {
+    this.setState({
+      nWrong: 0,
+      guessed: new Set(),
+      answer: randomWord(),
+    });
+  }
+
   guessedWord() {
     return this.state.answer
       .split("")
@@ -85,7 +95,11 @@ class Hangman extends Component {
           <p>You Lose, The Answer is: {this.state.answer}</p>
         ) : (
           <p className="Hangman-btns">{this.generateButtons()}</p>
-        )}{" "}
+        )}
+        <br></br>
+        <button style={{ width: "100px" }} onClick={this.reset}>
+          Restart
+        </button>
       </div>
     );
   }
