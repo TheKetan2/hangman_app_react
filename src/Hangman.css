@@ -56,3 +56,15 @@
   color: #eeeeee;
   box-shadow: 0 6px #9e9e9e;
 }
+
+#reset {
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #9c27b8;
+  box-shadow: 0 6px #600968;
+}
+#reset:hover {
+  background: #600968;
+}

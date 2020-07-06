@@ -24,6 +24,7 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: randomWord(),
     };
+    console.log(this.state.answer);
     this.handleGuess = this.handleGuess.bind(this);
     this.reset = this.reset.bind(this);
   }
@@ -79,14 +80,18 @@ class Hangman extends Component {
     return (
       <div className="Hangman">
         <h1>Hangman</h1>
-        <img
-          src={
-            gameOver
-              ? this.props.images[6]
-              : this.props.images[this.state.nWrong]
-          }
-          alt={altText}
-        />
+        {this.guessedWord().join("") === this.state.answer ? (
+          <p>You Won!</p>
+        ) : (
+          <img
+            src={
+              gameOver
+                ? this.props.images[6]
+                : this.props.images[this.state.nWrong]
+            }
+            alt={altText}
+          />
+        )}
         <p>Wrong: {this.state.nWrong}</p>
         <p className="Hangman-word">
           {gameOver ? this.state.answer : this.guessedWord()}
@@ -97,7 +102,7 @@ class Hangman extends Component {
           <p className="Hangman-btns">{this.generateButtons()}</p>
         )}
         <br></br>
-        <button style={{ width: "100px" }} onClick={this.reset}>
+        <button id="reset" onClick={this.reset}>
           Restart
         </button>
       </div>
